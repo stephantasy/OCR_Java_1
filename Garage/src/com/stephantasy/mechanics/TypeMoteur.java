@@ -1,6 +1,7 @@
 package com.stephantasy.mechanics;
 
 public enum TypeMoteur {
+    INDEFINI("INDEFINI"),
     DIESEL("DIESEL"),
     ESSENCE("ESSENCE"),
     HYBRIDE("HYBRIDE"),

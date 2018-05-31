@@ -1,6 +1,7 @@
 package com.stephantasy.vehicules;
 
 public enum Marque {
+    INDEFINIE("INDEFINIE"),
     RENO("RENO"),
     PIGEOT("PIGEOT"),
     TROEN("TROEN");

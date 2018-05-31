@@ -1,15 +1,9 @@
 package com.stephantasy;
 
-import com.stephantasy.garage.Garage;
-import com.stephantasy.mechanics.MoteurDiesel;
-import com.stephantasy.mechanics.MoteurElectrique;
-import com.stephantasy.mechanics.MoteurEssence;
-import com.stephantasy.mechanics.MoteurHybride;
-import com.stephantasy.misc.*;
-import com.stephantasy.vehicules.A300B;
-import com.stephantasy.vehicules.D4;
-import com.stephantasy.vehicules.Lagouna;
-import com.stephantasy.vehicules.Vehicule;
+import com.stephantasy.garage.*;
+import com.stephantasy.equipment.*;
+import com.stephantasy.mechanics.*;
+import com.stephantasy.vehicules.*;
 
 public class Main {
 
@@ -21,6 +15,7 @@ public class Main {
         lag1.setMoteur(new MoteurEssence("150 Chevaux", 10256d));
         lag1.addOption(new GPS());
         lag1.addOption(new SiegeChauffant());
+        lag1.addOption(new VitreElectrique());
         lag1.addOption(new VitreElectrique());
         garage.addVoiture(lag1);
 
@@ -39,7 +34,7 @@ public class Main {
         garage.addVoiture(d4_1);
 
         Vehicule lag2 = new Lagouna();
-        lag2.setMoteur(new MoteurDiesel("500 Hdi", 456987d));
+        lag2.setMoteur(new MoteurDiesel("500 Hdi", 45698.7d));
         garage.addVoiture(lag2);
 
         Vehicule A300B_1 = new A300B();
@@ -56,5 +51,7 @@ public class Main {
         d4_2.addOption(new GPS());
         d4_2.addOption(new VitreElectrique());
         garage.addVoiture(d4_2);
+
+        System.out.println(garage);
     }
 }
