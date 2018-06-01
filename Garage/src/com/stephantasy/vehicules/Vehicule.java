@@ -17,7 +17,10 @@ public abstract class Vehicule implements Serializable {
     private final long id  = getRandomNumber();
 
 
-    // NOM
+    /**
+     * NOM
+     * @return le nom du véhicule
+     */
     public String getNom() {
         return nom;
     }
@@ -37,7 +40,10 @@ public abstract class Vehicule implements Serializable {
     }
 
 
-    // OPTIONS
+    /**
+     * OPTION
+     * @return la liste des options
+     */
     public Set<Option> getOptions(){
         return options;
     }
@@ -45,7 +51,10 @@ public abstract class Vehicule implements Serializable {
         options.add(option);
     }
 
-    // MARQUE
+    /**
+     * MARQUE
+     * @return La marque du véhicule
+     */
     public Marque getNomMarque() {
         return nomMarque;
     }
@@ -53,7 +62,10 @@ public abstract class Vehicule implements Serializable {
         this.nomMarque = nomMarque;
     }
 
-    // MOTEUR
+    /**
+     * MOTEUR
+     * @return le moteur du véhicule
+     */
     public Moteur getMoteur() {
         return moteur;
     }
@@ -61,18 +73,20 @@ public abstract class Vehicule implements Serializable {
         this.moteur = moteur;
     }
 
-
+    /**
+     * Identifiant du véhicule servant à nommer le fichier de sauvegarde
+     * (Devrait être unique, mais ce n'est pas le cas. Cependat avoir 2 véhicules avec le même ID est peu probable !)
+     * @return L'id du véhicule
+     */
     public long getId() {
         return id;
     }
 
 
-    @Override
-    public String toString() {
-        return String.format("Voiture %s : %s Moteur %s %s (%.2f€) %s d'une valeur totale de %.2f€",
-                nomMarque.toString(), nom, moteur.toString(), moteur.getCylindre(), prix + moteur.getPrix(), getOptionsDetail(), getPrixTotal());
-    }
-
+    /**
+     * Liste des options ou message indiquant qu'il n'y en a pas
+     * @return La liste des options
+     */
     private String getOptionsDetail() {
         if(options.isEmpty()){
             return "[Sans option]";
@@ -85,14 +99,23 @@ public abstract class Vehicule implements Serializable {
      * @return Prix total
      */
     private double getPrixTotal() {
-        double prixOptions = options.stream().map(x -> x.getPrix()).reduce(0d, (x, y) -> x + y);
+        double prixOptions = options.stream().map(Option::getPrix).reduce(0d, (x, y) -> x + y);
         return prix + moteur.getPrix() + prixOptions;
     }
 
-
+    /**
+     * Crée un nombre aléatoire servant d'identifiant au véhicule
+     * @return Un nombre aléatoire
+     */
     private long getRandomNumber() {
         Random r = new Random();
         return r.nextLong();
     }
 
+
+    @Override
+    public String toString() {
+        return String.format("Voiture %s : %s Moteur %s %s (%.2f€) %s d'une valeur totale de %.2f€",
+                nomMarque.toString(), nom, moteur.toString(), moteur.getCylindre(), prix + moteur.getPrix(), getOptionsDetail(), getPrixTotal());
+    }
 }

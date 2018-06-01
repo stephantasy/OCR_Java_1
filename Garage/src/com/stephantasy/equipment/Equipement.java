@@ -1,6 +1,11 @@
 package com.stephantasy.equipment;
 
-public abstract class Equipement implements Option{
+import java.io.Serializable;
+
+/**
+ * Équipement optionnel d'un véhicule
+ */
+public abstract class Equipement implements Option, Serializable {
 
     protected String nom;
     protected double prix;
@@ -15,6 +20,10 @@ public abstract class Equipement implements Option{
         }
     }
 
+    /**
+     * Nom de l'équipement
+     * @return
+     */
     public String getNom() {
         return nom;
     }
