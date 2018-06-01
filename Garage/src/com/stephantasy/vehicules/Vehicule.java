@@ -8,6 +8,8 @@ import java.util.*;
 
 public abstract class Vehicule implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     protected String nom = "Undefini";
     protected double prix = 0;              // Prix de la voiture sans moteur, ni option
     protected Marque nomMarque = Marque.INDEFINIE;

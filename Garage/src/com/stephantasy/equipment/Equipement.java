@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 public abstract class Equipement implements Option, Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     protected String nom;
     protected double prix;
 
